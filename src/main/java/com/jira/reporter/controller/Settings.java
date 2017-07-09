@@ -4,21 +4,22 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
+import java.util.prefs.Preferences;
 
 /**
  * @author Oleg Zaidullin
  */
 public class Settings {
-    
-    private final String assignee;
-    private final Date   lastDate;
-    private final String emails;
-    private final int reportNum;
-    private final String mailgunUrl;
-    private final String mailgunKey;
-    private final String username;
-    private final String password;
-    private final String board;
+
+    private final String           assignee;
+    private final Date             lastDate;
+    private final String           emails;
+    private final int              reportNum;
+    private final String           mailgunUrl;
+    private final String           mailgunKey;
+    private final String           username;
+    private final String           password;
+    private final String           board;
     private final SimpleDateFormat sf;
 
     public Settings(String assignee, String lastDateStr, String emails, int reportNum, String mailgunUrl,
@@ -35,6 +36,20 @@ public class Settings {
         this.username = username;
         this.password = password;
         this.board = board;
+    }
+
+    public static Settings fromPrefs(Preferences prefs) throws ParseException {
+        return new Settings(
+                prefs.get("assignee", ""),
+                prefs.get("lastDate", "01.01.1970 00:00:00"),
+                prefs.get("emails", ""),
+                Integer.parseInt(prefs.get("reportNum", "1")),
+                prefs.get("mailgunUrl", ""),
+                prefs.get("mailgunKey", ""),
+                prefs.get("username", ""),
+                prefs.get("password", ""),
+                prefs.get("board", "")
+        );
     }
 
     public String getDateString() {

@@ -49,27 +49,30 @@ public class MainController {
     private Log             log;
     private List<TaskValue> taskValues;
     private int reportNum = 1;
-    private Preferences settings;
+    private Preferences prefs;
 
     public void initialize() {
-        sendButton.setDisable(true);
-
-        log = new Log(viewText);
-        settings = Preferences.userRoot().node("jira_reporter");
-        username = settings.get("username", null);
-        password = settings.get("password", null);
-        board = settings.get("board", null);
-        assignee = settings.get("assignee", null);
-        emails = Arrays.asList(settings.get("emails", null).split(","));
-        reportNum = settings.getInt("reportNum", 0);
         try {
-            lastDate = sf.parse(settings.get("lastDate", null));
+            sendButton.setDisable(true);
+            log = new Log(viewText);
+            prefs = Preferences.userRoot().node("jira_reporter");
+            readSettings(Settings.fromPrefs(prefs));
         } catch (ParseException e) {
             e.printStackTrace();
         }
+    }
 
-        client = new JiraClient(username,password,board,log);
-        mailManager = new MailgunManager(settings.get("mailgunUrl", null), settings.get("mailgunKey", null));
+    private void readSettings(Settings settings) {
+        username = settings.getUsername();
+        password = settings.getPassword();
+        board = settings.getBoard();
+        assignee = settings.getAssignee();
+        emails = Arrays.asList(settings.getEmails().split(","));
+        reportNum = settings.getReportNum();
+        lastDate = settings.getLastDate();
+
+        client = new JiraClient(username, password, board, log);
+        mailManager = new MailgunManager(settings.getMailgunUrl(), settings.getMailgunKey());
     }
 
     public void run(MouseEvent mouseEvent) {
@@ -89,6 +92,9 @@ public class MainController {
         FXMLLoader loader   = new FXMLLoader();
         Parent     root     = loader.load(getClass().getResourceAsStream(fxmlFile));
         SettingsController settingsController = loader.getController();
+
+        settingsController.setEvent(this::readSettings);
+
         Stage      stage    = new Stage();
         stage.setScene(new Scene(root));
         stage.setTitle("Settings");
@@ -157,8 +163,8 @@ public class MainController {
                 mailManager.sendMessage(taskValues, addText.getText(), reportNum, emails);
                 log.add("Finished.");
                 startButton.setDisable(false);
-                settings.put("lastDate", sf.format(new Date()));
-                settings.putInt("reportNum", ++reportNum);
+                prefs.put("lastDate", sf.format(new Date()));
+                prefs.putInt("reportNum", ++reportNum);
             }
             return 0;
         }

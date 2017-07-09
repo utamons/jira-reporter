@@ -28,19 +28,14 @@ public class SettingsController {
     public  Button        okButton;
     private Settings      settings;
     private Preferences prefs;
+    private SettingsEvent event;
+
+    void setEvent(SettingsEvent event) {
+        this.event = event;
+    }
 
     private void settingsFromPref() throws ParseException {
-        settings = new Settings(
-                prefs.get("assignee", ""),
-                prefs.get("lastDate", "01.01.1970 00:00:00"),
-                prefs.get("emails", ""),
-                Integer.parseInt(prefs.get("reportNum", "1")),
-                prefs.get("mailgunUrl", ""),
-                prefs.get("mailgunKey", ""),
-                prefs.get("username", ""),
-                prefs.get("password", ""),
-                prefs.get("board", "")
-        );
+        settings = Settings.fromPrefs(prefs);
     }
 
     private void setSettingsFromFields() throws ParseException {
@@ -95,6 +90,7 @@ public class SettingsController {
             Stage stage = (Stage) okButton.getScene().getWindow();
             setSettingsFromFields();
             prefsFromSetting();
+            event.update(settings);
             stage.close();
         } catch (ParseException e) {
             e.printStackTrace();
