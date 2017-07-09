@@ -1,0 +1,257 @@
+{
+  "self": "https://swellby.atlassian.net/rest/api/2/issue/AG-422/changelog?maxResults=100&startAt=0",
+  "maxResults": 100,
+  "startAt": 0,
+  "total": 8,
+  "isLast": true,
+  "values": [
+    {
+      "id": "31221",
+      "author": {
+        "self": "https://swellby.atlassian.net/rest/api/2/user?username=lwinder",
+        "name": "lwinder",
+        "key": "lwinder",
+        "accountId": "557058:96d56e5c-7b37-461c-9f5e-3ecb0a24d5bd",
+        "emailAddress": "lindsey@swellby.com",
+        "avatarUrls": {
+          "48x48": "https://avatar-cdn.atlassian.com/eda4ccb175cbb368e75eba885b561f3b?s=48&d=https%3A%2F%2Fsecure.gravatar.com%2Favatar%2Feda4ccb175cbb368e75eba885b561f3b%3Fd%3Dmm%26s%3D48%26noRedirect%3Dtrue",
+          "24x24": "https://avatar-cdn.atlassian.com/eda4ccb175cbb368e75eba885b561f3b?s=24&d=https%3A%2F%2Fsecure.gravatar.com%2Favatar%2Feda4ccb175cbb368e75eba885b561f3b%3Fd%3Dmm%26s%3D24%26noRedirect%3Dtrue",
+          "16x16": "https://avatar-cdn.atlassian.com/eda4ccb175cbb368e75eba885b561f3b?s=16&d=https%3A%2F%2Fsecure.gravatar.com%2Favatar%2Feda4ccb175cbb368e75eba885b561f3b%3Fd%3Dmm%26s%3D16%26noRedirect%3Dtrue",
+          "32x32": "https://avatar-cdn.atlassian.com/eda4ccb175cbb368e75eba885b561f3b?s=32&d=https%3A%2F%2Fsecure.gravatar.com%2Favatar%2Feda4ccb175cbb368e75eba885b561f3b%3Fd%3Dmm%26s%3D32%26noRedirect%3Dtrue"
+        },
+        "displayName": "Lindsey Winder",
+        "active": true,
+        "timeZone": "America/New_York"
+      },
+      "created": "2017-03-25T09:55:49.961-0400",
+      "items": [
+        {
+          "field": "Rank",
+          "fieldtype": "custom",
+          "from": "",
+          "fromString": "",
+          "to": "",
+          "toString": "Ranked higher"
+        }
+      ]
+    },
+    {
+      "id": "31222",
+      "author": {
+        "self": "https://swellby.atlassian.net/rest/api/2/user?username=lwinder",
+        "name": "lwinder",
+        "key": "lwinder",
+        "accountId": "557058:96d56e5c-7b37-461c-9f5e-3ecb0a24d5bd",
+        "emailAddress": "lindsey@swellby.com",
+        "avatarUrls": {
+          "48x48": "https://avatar-cdn.atlassian.com/eda4ccb175cbb368e75eba885b561f3b?s=48&d=https%3A%2F%2Fsecure.gravatar.com%2Favatar%2Feda4ccb175cbb368e75eba885b561f3b%3Fd%3Dmm%26s%3D48%26noRedirect%3Dtrue",
+          "24x24": "https://avatar-cdn.atlassian.com/eda4ccb175cbb368e75eba885b561f3b?s=24&d=https%3A%2F%2Fsecure.gravatar.com%2Favatar%2Feda4ccb175cbb368e75eba885b561f3b%3Fd%3Dmm%26s%3D24%26noRedirect%3Dtrue",
+          "16x16": "https://avatar-cdn.atlassian.com/eda4ccb175cbb368e75eba885b561f3b?s=16&d=https%3A%2F%2Fsecure.gravatar.com%2Favatar%2Feda4ccb175cbb368e75eba885b561f3b%3Fd%3Dmm%26s%3D16%26noRedirect%3Dtrue",
+          "32x32": "https://avatar-cdn.atlassian.com/eda4ccb175cbb368e75eba885b561f3b?s=32&d=https%3A%2F%2Fsecure.gravatar.com%2Favatar%2Feda4ccb175cbb368e75eba885b561f3b%3Fd%3Dmm%26s%3D32%26noRedirect%3Dtrue"
+        },
+        "displayName": "Lindsey Winder",
+        "active": true,
+        "timeZone": "America/New_York"
+      },
+      "created": "2017-03-25T09:56:29.725-0400",
+      "items": [
+        {
+          "field": "Sprint",
+          "fieldtype": "custom",
+          "from": null,
+          "fromString": null,
+          "to": "13",
+          "toString": "AG Sprint 1"
+        }
+      ]
+    },
+    {
+      "id": "31223",
+      "author": {
+        "self": "https://swellby.atlassian.net/rest/api/2/user?username=lwinder",
+        "name": "lwinder",
+        "key": "lwinder",
+        "accountId": "557058:96d56e5c-7b37-461c-9f5e-3ecb0a24d5bd",
+        "emailAddress": "lindsey@swellby.com",
+        "avatarUrls": {
+          "48x48": "https://avatar-cdn.atlassian.com/eda4ccb175cbb368e75eba885b561f3b?s=48&d=https%3A%2F%2Fsecure.gravatar.com%2Favatar%2Feda4ccb175cbb368e75eba885b561f3b%3Fd%3Dmm%26s%3D48%26noRedirect%3Dtrue",
+          "24x24": "https://avatar-cdn.atlassian.com/eda4ccb175cbb368e75eba885b561f3b?s=24&d=https%3A%2F%2Fsecure.gravatar.com%2Favatar%2Feda4ccb175cbb368e75eba885b561f3b%3Fd%3Dmm%26s%3D24%26noRedirect%3Dtrue",
+          "16x16": "https://avatar-cdn.atlassian.com/eda4ccb175cbb368e75eba885b561f3b?s=16&d=https%3A%2F%2Fsecure.gravatar.com%2Favatar%2Feda4ccb175cbb368e75eba885b561f3b%3Fd%3Dmm%26s%3D16%26noRedirect%3Dtrue",
+          "32x32": "https://avatar-cdn.atlassian.com/eda4ccb175cbb368e75eba885b561f3b?s=32&d=https%3A%2F%2Fsecure.gravatar.com%2Favatar%2Feda4ccb175cbb368e75eba885b561f3b%3Fd%3Dmm%26s%3D32%26noRedirect%3Dtrue"
+        },
+        "displayName": "Lindsey Winder",
+        "active": true,
+        "timeZone": "America/New_York"
+      },
+      "created": "2017-03-25T09:56:29.936-0400",
+      "items": [
+        {
+          "field": "Rank",
+          "fieldtype": "custom",
+          "from": "",
+          "fromString": "",
+          "to": "",
+          "toString": "Ranked higher"
+        }
+      ]
+    },
+    {
+      "id": "31224",
+      "author": {
+        "self": "https://swellby.atlassian.net/rest/api/2/user?username=lwinder",
+        "name": "lwinder",
+        "key": "lwinder",
+        "accountId": "557058:96d56e5c-7b37-461c-9f5e-3ecb0a24d5bd",
+        "emailAddress": "lindsey@swellby.com",
+        "avatarUrls": {
+          "48x48": "https://avatar-cdn.atlassian.com/eda4ccb175cbb368e75eba885b561f3b?s=48&d=https%3A%2F%2Fsecure.gravatar.com%2Favatar%2Feda4ccb175cbb368e75eba885b561f3b%3Fd%3Dmm%26s%3D48%26noRedirect%3Dtrue",
+          "24x24": "https://avatar-cdn.atlassian.com/eda4ccb175cbb368e75eba885b561f3b?s=24&d=https%3A%2F%2Fsecure.gravatar.com%2Favatar%2Feda4ccb175cbb368e75eba885b561f3b%3Fd%3Dmm%26s%3D24%26noRedirect%3Dtrue",
+          "16x16": "https://avatar-cdn.atlassian.com/eda4ccb175cbb368e75eba885b561f3b?s=16&d=https%3A%2F%2Fsecure.gravatar.com%2Favatar%2Feda4ccb175cbb368e75eba885b561f3b%3Fd%3Dmm%26s%3D16%26noRedirect%3Dtrue",
+          "32x32": "https://avatar-cdn.atlassian.com/eda4ccb175cbb368e75eba885b561f3b?s=32&d=https%3A%2F%2Fsecure.gravatar.com%2Favatar%2Feda4ccb175cbb368e75eba885b561f3b%3Fd%3Dmm%26s%3D32%26noRedirect%3Dtrue"
+        },
+        "displayName": "Lindsey Winder",
+        "active": true,
+        "timeZone": "America/New_York"
+      },
+      "created": "2017-03-25T09:56:47.358-0400",
+      "items": [
+        {
+          "field": "status",
+          "fieldtype": "jira",
+          "from": "10000",
+          "fromString": "To Do",
+          "to": "3",
+          "toString": "In Progress"
+        }
+      ]
+    },
+    {
+      "id": "31234",
+      "author": {
+        "self": "https://swellby.atlassian.net/rest/api/2/user?username=dennis",
+        "name": "dennis",
+        "key": "dennis",
+        "accountId": "557058:b19d3505-9de5-443f-80c3-9898c94c6759",
+        "emailAddress": "dennis@swellby.com",
+        "avatarUrls": {
+          "48x48": "https://avatar-cdn.atlassian.com/ca31331ed8453dcc9971fdee568431da?s=48&d=https%3A%2F%2Fswellby.atlassian.net%2Fsecure%2Fuseravatar%3FavatarId%3D10108%26noRedirect%3Dtrue",
+          "24x24": "https://avatar-cdn.atlassian.com/ca31331ed8453dcc9971fdee568431da?s=24&d=https%3A%2F%2Fswellby.atlassian.net%2Fsecure%2Fuseravatar%3Fsize%3Dsmall%26avatarId%3D10108%26noRedirect%3Dtrue",
+          "16x16": "https://avatar-cdn.atlassian.com/ca31331ed8453dcc9971fdee568431da?s=16&d=https%3A%2F%2Fswellby.atlassian.net%2Fsecure%2Fuseravatar%3Fsize%3Dxsmall%26avatarId%3D10108%26noRedirect%3Dtrue",
+          "32x32": "https://avatar-cdn.atlassian.com/ca31331ed8453dcc9971fdee568431da?s=32&d=https%3A%2F%2Fswellby.atlassian.net%2Fsecure%2Fuseravatar%3Fsize%3Dmedium%26avatarId%3D10108%26noRedirect%3Dtrue"
+        },
+        "displayName": "Dennis VanBruinisse",
+        "active": true,
+        "timeZone": "America/New_York"
+      },
+      "created": "2017-03-25T21:53:53.183-0400",
+      "items": [
+        {
+          "field": "priority",
+          "fieldtype": "jira",
+          "from": "3",
+          "fromString": "Medium",
+          "to": "2",
+          "toString": "High"
+        }
+      ]
+    },
+    {
+      "id": "31402",
+      "author": {
+        "self": "https://swellby.atlassian.net/rest/api/2/user?username=ozaidullin",
+        "name": "ozaidullin",
+        "key": "ozaidullin",
+        "accountId": "557058:c8c291ac-ca57-4b77-ab4f-669acaba3e4a",
+        "emailAddress": "cornknight@gmail.com",
+        "avatarUrls": {
+          "48x48": "https://avatar-cdn.atlassian.com/b4e6a02df6ff27a338e04797ae5e2548?s=48&d=https%3A%2F%2Fswellby.atlassian.net%2Fsecure%2Fuseravatar%3FownerId%3Dozaidullin%26avatarId%3D10600%26noRedirect%3Dtrue",
+          "24x24": "https://avatar-cdn.atlassian.com/b4e6a02df6ff27a338e04797ae5e2548?s=24&d=https%3A%2F%2Fswellby.atlassian.net%2Fsecure%2Fuseravatar%3Fsize%3Dsmall%26ownerId%3Dozaidullin%26avatarId%3D10600%26noRedirect%3Dtrue",
+          "16x16": "https://avatar-cdn.atlassian.com/b4e6a02df6ff27a338e04797ae5e2548?s=16&d=https%3A%2F%2Fswellby.atlassian.net%2Fsecure%2Fuseravatar%3Fsize%3Dxsmall%26ownerId%3Dozaidullin%26avatarId%3D10600%26noRedirect%3Dtrue",
+          "32x32": "https://avatar-cdn.atlassian.com/b4e6a02df6ff27a338e04797ae5e2548?s=32&d=https%3A%2F%2Fswellby.atlassian.net%2Fsecure%2Fuseravatar%3Fsize%3Dmedium%26ownerId%3Dozaidullin%26avatarId%3D10600%26noRedirect%3Dtrue"
+        },
+        "displayName": "Oleg Zaidullin",
+        "active": true,
+        "timeZone": "Europe/Prague"
+      },
+      "created": "2017-03-28T04:59:04.785-0400",
+      "items": [
+        {
+          "field": "status",
+          "fieldtype": "jira",
+          "from": "3",
+          "fromString": "In Progress",
+          "to": "10400",
+          "toString": "Ready for Test"
+        }
+      ]
+    },
+    {
+      "id": "31423",
+      "author": {
+        "self": "https://swellby.atlassian.net/rest/api/2/user?username=lwinder",
+        "name": "lwinder",
+        "key": "lwinder",
+        "accountId": "557058:96d56e5c-7b37-461c-9f5e-3ecb0a24d5bd",
+        "emailAddress": "lindsey@swellby.com",
+        "avatarUrls": {
+          "48x48": "https://avatar-cdn.atlassian.com/eda4ccb175cbb368e75eba885b561f3b?s=48&d=https%3A%2F%2Fsecure.gravatar.com%2Favatar%2Feda4ccb175cbb368e75eba885b561f3b%3Fd%3Dmm%26s%3D48%26noRedirect%3Dtrue",
+          "24x24": "https://avatar-cdn.atlassian.com/eda4ccb175cbb368e75eba885b561f3b?s=24&d=https%3A%2F%2Fsecure.gravatar.com%2Favatar%2Feda4ccb175cbb368e75eba885b561f3b%3Fd%3Dmm%26s%3D24%26noRedirect%3Dtrue",
+          "16x16": "https://avatar-cdn.atlassian.com/eda4ccb175cbb368e75eba885b561f3b?s=16&d=https%3A%2F%2Fsecure.gravatar.com%2Favatar%2Feda4ccb175cbb368e75eba885b561f3b%3Fd%3Dmm%26s%3D16%26noRedirect%3Dtrue",
+          "32x32": "https://avatar-cdn.atlassian.com/eda4ccb175cbb368e75eba885b561f3b?s=32&d=https%3A%2F%2Fsecure.gravatar.com%2Favatar%2Feda4ccb175cbb368e75eba885b561f3b%3Fd%3Dmm%26s%3D32%26noRedirect%3Dtrue"
+        },
+        "displayName": "Lindsey Winder",
+        "active": true,
+        "timeZone": "America/New_York"
+      },
+      "created": "2017-03-28T10:31:16.643-0400",
+      "items": [
+        {
+          "field": "resolution",
+          "fieldtype": "jira",
+          "from": null,
+          "fromString": null,
+          "to": "10000",
+          "toString": "Done"
+        },
+        {
+          "field": "status",
+          "fieldtype": "jira",
+          "from": "10400",
+          "fromString": "Ready for Test",
+          "to": "10001",
+          "toString": "Done"
+        }
+      ]
+    },
+    {
+      "id": "34767",
+      "author": {
+        "self": "https://swellby.atlassian.net/rest/api/2/user?username=ozaidullin",
+        "name": "ozaidullin",
+        "key": "ozaidullin",
+        "accountId": "557058:c8c291ac-ca57-4b77-ab4f-669acaba3e4a",
+        "emailAddress": "cornknight@gmail.com",
+        "avatarUrls": {
+          "48x48": "https://avatar-cdn.atlassian.com/b4e6a02df6ff27a338e04797ae5e2548?s=48&d=https%3A%2F%2Fswellby.atlassian.net%2Fsecure%2Fuseravatar%3FownerId%3Dozaidullin%26avatarId%3D10600%26noRedirect%3Dtrue",
+          "24x24": "https://avatar-cdn.atlassian.com/b4e6a02df6ff27a338e04797ae5e2548?s=24&d=https%3A%2F%2Fswellby.atlassian.net%2Fsecure%2Fuseravatar%3Fsize%3Dsmall%26ownerId%3Dozaidullin%26avatarId%3D10600%26noRedirect%3Dtrue",
+          "16x16": "https://avatar-cdn.atlassian.com/b4e6a02df6ff27a338e04797ae5e2548?s=16&d=https%3A%2F%2Fswellby.atlassian.net%2Fsecure%2Fuseravatar%3Fsize%3Dxsmall%26ownerId%3Dozaidullin%26avatarId%3D10600%26noRedirect%3Dtrue",
+          "32x32": "https://avatar-cdn.atlassian.com/b4e6a02df6ff27a338e04797ae5e2548?s=32&d=https%3A%2F%2Fswellby.atlassian.net%2Fsecure%2Fuseravatar%3Fsize%3Dmedium%26ownerId%3Dozaidullin%26avatarId%3D10600%26noRedirect%3Dtrue"
+        },
+        "displayName": "Oleg Zaidullin",
+        "active": true,
+        "timeZone": "Europe/Prague"
+      },
+      "created": "2017-06-01T23:26:40.664-0400",
+      "items": [
+        {
+          "field": "Sprint",
+          "fieldtype": "custom",
+          "from": "13",
+          "fromString": "AG Sprint 1",
+          "to": "",
+          "toString": ""
+        }
+      ]
+    }
+  ]
+}
