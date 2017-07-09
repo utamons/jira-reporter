@@ -88,6 +88,7 @@ public class MainController {
         String     fxmlFile = "/fxml/settings.fxml";
         FXMLLoader loader   = new FXMLLoader();
         Parent     root     = loader.load(getClass().getResourceAsStream(fxmlFile));
+        SettingsController settingsController = loader.getController();
         Stage      stage    = new Stage();
         stage.setScene(new Scene(root));
         stage.setTitle("Settings");

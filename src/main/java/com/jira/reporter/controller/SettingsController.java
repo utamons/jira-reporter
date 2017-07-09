@@ -7,6 +7,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
+import java.text.ParseException;
 import java.util.prefs.Preferences;
 
 /**
@@ -20,64 +21,84 @@ public class SettingsController {
     public  TextField     reportNum;
     public  TextField     mailgunUrl;
     public  TextField     mailgunKey;
-    private Preferences   settings;
     public  TextField     username;
     public  PasswordField password;
     public  TextField     board;
     public  Button        cancelButton;
     public  Button        okButton;
+    private Settings      settings;
+    private Preferences prefs;
+
+    private void settingsFromPref() throws ParseException {
+        settings = new Settings(
+                prefs.get("assignee", ""),
+                prefs.get("lastDate", "01.01.1970 00:00:00"),
+                prefs.get("emails", ""),
+                Integer.parseInt(prefs.get("reportNum", "1")),
+                prefs.get("mailgunUrl", ""),
+                prefs.get("mailgunKey", ""),
+                prefs.get("username", ""),
+                prefs.get("password", ""),
+                prefs.get("board", "")
+        );
+    }
+
+    private void setSettingsFromFields() throws ParseException {
+        settings = new Settings(
+                assignee.getText(),
+                lastDate.getText(),
+                emails.getText(),
+                Integer.parseInt(reportNum.getText()),
+                mailgunUrl.getText(),
+                mailgunKey.getText(),
+                username.getText(),
+                password.getText(),
+                board.getText());
+    }
+
+    private void prefsFromSetting() {
+        prefs.put("username", settings.getUsername());
+        prefs.put("password", settings.getPassword());
+        prefs.put("board", settings.getBoard());
+        prefs.put("lastDate", settings.getDateString());
+        prefs.put("emails", settings.getEmails());
+        prefs.put("assignee", settings.getAssignee());
+        prefs.putInt("reportNum", Integer.parseInt(reportNum.getText()));
+        prefs.put("mailgunUrl", settings.getMailgunUrl());
+        prefs.put("mailgunKey",settings.getMailgunKey());
+    }
+
+    private void fieldsFromSettings() {
+        assignee.setText(settings.getAssignee());
+        lastDate.setText(settings.getDateString());
+        emails.setText(settings.getEmails());
+        reportNum.setText(String.valueOf(settings.getReportNum()));
+        mailgunUrl.setText(settings.getMailgunUrl());
+        mailgunKey.setText(settings.getMailgunKey());
+        username.setText(settings.getUsername());
+        password.setText(settings.getPassword());
+        board.setText(settings.getBoard());
+    }
 
     public void initialize() {
-        settings = Preferences.userRoot().node("jira_reporter");
-        String usernameValue = settings.get("username", null);
-        if (usernameValue != null)
-            username.setText(usernameValue);
-
-        String passwordValue = settings.get("password", null);
-        if (passwordValue != null)
-            this.password.setText(passwordValue);
-
-        String boardValue = settings.get("board", null);
-        if (boardValue != null)
-            board.setText(boardValue);
-
-        String assigneeValue = settings.get("assignee", null);
-        if (assigneeValue != null)
-            assignee.setText(assigneeValue);
-
-        String lastDateValue = settings.get("lastDate", null);
-        if (lastDateValue != null)
-            lastDate.setText(lastDateValue);
-
-        String emailsValue = settings.get("emails", null);
-        if (emailsValue != null)
-            emails.setText(emailsValue);
-
-        String numValue = settings.get("reportNum", null);
-        if (numValue != null)
-            reportNum.setText(numValue);
-
-        String mailgunUrlValue = settings.get("mailgunUrl", null);
-        if (mailgunUrlValue != null)
-            mailgunUrl.setText(mailgunUrlValue);
-
-        String mailgunKeyValue = settings.get("mailgunKey", null);
-        if (mailgunKeyValue != null)
-            mailgunKey.setText(mailgunKeyValue);
+        try {
+            prefs = Preferences.userRoot().node("jira_reporter");
+            settingsFromPref();
+            fieldsFromSettings();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
     }
 
     public void save(MouseEvent mouseEvent) {
-        Stage stage = (Stage) okButton.getScene().getWindow();
-        settings.put("username", username.getText());
-        settings.put("password", password.getText());
-        settings.put("board", board.getText());
-        settings.put("lastDate", lastDate.getText());
-        settings.put("emails", emails.getText());
-        settings.put("assignee", assignee.getText());
-        settings.putInt("reportNum", Integer.parseInt(reportNum.getText()));
-        settings.put("mailgunUrl",mailgunUrl.getText());
-        settings.put("mailgunKey",mailgunKey.getText());
-        stage.close();
+        try {
+            Stage stage = (Stage) okButton.getScene().getWindow();
+            setSettingsFromFields();
+            prefsFromSetting();
+            stage.close();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
     }
 
     public void close(MouseEvent mouseEvent) {
