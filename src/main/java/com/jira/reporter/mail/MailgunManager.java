@@ -26,7 +26,7 @@ import java.util.List;
  *
  * @author Oleg Zaidullin
  */
-public class MailgunManager {
+public class MailgunManager implements MailSender{
 
     private static final int    MAX_CONN_TOTAL = 200;
 

@@ -1,5 +1,6 @@
 package com.jira.reporter.controller;
 
+import com.jira.reporter.mail.MailSender;
 import com.jira.reporter.mail.MailgunManager;
 import com.jira.reporter.rest.JiraClient;
 import com.jira.reporter.util.Log;
@@ -28,7 +29,7 @@ import java.util.prefs.Preferences;
 @SuppressWarnings("unused")
 public class MainController {
 
-    public  Button              sendButton;
+    public  Button     sendButton;
     private JiraClient client;
 
     private SimpleDateFormat sf = new SimpleDateFormat("dd.MM.yyyy HH:mm:ss", Locale.ENGLISH);
@@ -38,13 +39,13 @@ public class MainController {
     public Button   startButton;
     public Button   exitButton;
 
-    private String         username;
-    private String         password;
-    private String         board;
-    private String         assignee;
-    private List<String>   emails;
-    private Date           lastDate;
-    private MailgunManager mailManager;
+    private String       username;
+    private String       password;
+    private String       board;
+    private String       assignee;
+    private List<String> emails;
+    private Date         lastDate;
+    private MailSender   mailManager;
 
     private Log             log;
     private List<TaskValue> taskValues;
@@ -88,14 +89,14 @@ public class MainController {
     }
 
     public void settings(MouseEvent mouseEvent) throws IOException {
-        String     fxmlFile = "/fxml/settings.fxml";
-        FXMLLoader loader   = new FXMLLoader();
-        Parent     root     = loader.load(getClass().getResourceAsStream(fxmlFile));
+        String             fxmlFile           = "/fxml/settings.fxml";
+        FXMLLoader         loader             = new FXMLLoader();
+        Parent             root               = loader.load(getClass().getResourceAsStream(fxmlFile));
         SettingsController settingsController = loader.getController();
 
         settingsController.setEvent(this::readSettings);
 
-        Stage      stage    = new Stage();
+        Stage stage = new Stage();
         stage.setScene(new Scene(root));
         stage.setTitle("Settings");
         stage.initModality(Modality.WINDOW_MODAL);
@@ -108,7 +109,7 @@ public class MainController {
 
         taskValues = new ArrayList<>();
 
-        List<Task> issues = client.getTasks(assignee,lastDate);
+        List<Task> issues = client.getTasks(assignee, lastDate);
 
         for (Task t : issues) {
             final TaskFields fields = t.getFields();
@@ -123,7 +124,7 @@ public class MainController {
     }
 
     public void send(MouseEvent mouseEvent) {
-        Thread th = new Thread(new MailSender());
+        Thread th = new Thread(new Sender());
         th.setDaemon(true);
         th.start();
     }
@@ -148,7 +149,7 @@ public class MainController {
         }
     }
 
-    class MailSender extends javafx.concurrent.Task<Integer> {
+    class Sender extends javafx.concurrent.Task<Integer> {
 
         @Override
         protected Integer call() throws Exception {
