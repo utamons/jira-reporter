@@ -121,6 +121,7 @@ public class MainController {
         }
 
         log.add("Got " + issues.size() + " issues");
+        taskValues.forEach(t->log.add(t.getKey()+" "+t.getSummary()));
     }
 
     public void send(MouseEvent mouseEvent) {
