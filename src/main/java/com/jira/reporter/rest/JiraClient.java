@@ -51,7 +51,9 @@ public class JiraClient {
     private List<Task> filterByLog(List<Task> issues, String assignee, Date lastDate) throws IOException {
         final List<Task> result = new ArrayList<>();
 
+
         for (Task t : issues) {
+            this.log.add("Checking "+t.getKey());
             final String url       = JiraClient.logUrl + "issue/" + t.getId() + "/changelog";
             final LogResult    logResult = client.get(LogResult.class, url, false);
             final List<LogEntry> log = logResult.getValues();
@@ -66,6 +68,7 @@ public class JiraClient {
                     }
                 }
             }
+            this.log.add("Finished "+t.getKey());
         }
 
         return result;
@@ -79,12 +82,17 @@ public class JiraClient {
         if (boardId > 0) {
             final String url = JiraClient.agileUrl + "board/" + boardId + "/issue?start=0&maxResults=10000";
 
+            log.add("Request for tasks...");
             TasksResult result = client.get(TasksResult.class, url, false);
+            log.add("Got "+result.getIssues().size()+" tasks in the board");
 
             issues = result.getIssues()
                            .stream()
                            .filter(t -> t.hasAssignee(assignee) && t.isAfter(lastDate) && t.isDone() && t.hasSprint())
                            .collect(Collectors.toList());
+
+            log.add("Found "+issues.size()+" tasks for "+assignee);
+
         }
 
         return filterByLog(issues, assignee, lastDate);

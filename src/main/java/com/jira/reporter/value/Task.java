@@ -42,7 +42,7 @@ public class Task {
     }
 
     public boolean isAfter(Date date) {
-        return fields.getUpdated().compareTo(date) >= 0;
+        return fields.getUpdated().after(date);
     }
 
     public void setFields(TaskFields fields) {
