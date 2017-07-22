@@ -120,7 +120,7 @@ public class MainController {
                                          fields.getSummary()));
         }
 
-        log.add("Got " + issues.size() + " issues");
+        log.add("Got " + issues.size() + " done issues");
         taskValues.forEach(t->log.add(t.getKey()+" "+t.getSummary()));
     }
 
@@ -138,7 +138,6 @@ public class MainController {
                 log.add("No settings found.");
             else
                 try {
-                    log.add("Last date - " + lastDate);
                     log.add("Connecting...");
                     getIssues();
                     log.add("Finish.");

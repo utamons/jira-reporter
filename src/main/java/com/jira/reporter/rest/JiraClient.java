@@ -4,6 +4,8 @@ import com.jira.reporter.util.Log;
 import com.jira.reporter.value.*;
 
 import java.io.IOException;
+import java.net.URLEncoder;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -53,7 +55,7 @@ public class JiraClient {
 
 
         for (Task t : issues) {
-            this.log.add("Checking "+t.getKey());
+          //  this.log.add("Checking "+t.getKey());
             final String url       = JiraClient.logUrl + "issue/" + t.getId() + "/changelog";
             final LogResult    logResult = client.get(LogResult.class, url, false);
             final List<LogEntry> log = logResult.getValues();
@@ -68,7 +70,7 @@ public class JiraClient {
                     }
                 }
             }
-            this.log.add("Finished "+t.getKey());
+          //  this.log.add("Finished "+t.getKey());
         }
 
         return result;
@@ -76,23 +78,22 @@ public class JiraClient {
 
     public List<Task> getTasks(String assignee, Date lastDate) throws IOException {
         List<Task> issues = null;
+        SimpleDateFormat sf = new SimpleDateFormat("YYYY-MM-dd HH:mm");
 
         final int boardId = getBoardId();
 
         if (boardId > 0) {
-            final String url = JiraClient.agileUrl + "board/" + boardId + "/issue?start=0&maxResults=10000";
+            String dateStr = sf.format(lastDate);
+            final String url = JiraClient.agileUrl + "board/" + boardId + "/issue?jql=assignee=currentUser()"
+                    +URLEncoder.encode(" AND updated>\""+dateStr+"\"","UTF-8");
 
             log.add("Request for tasks...");
             TasksResult result = client.get(TasksResult.class, url, false);
-            log.add("Got "+result.getIssues().size()+" tasks in the board");
-
+            log.add("Found "+result.getIssues().size()+" tasks updated after "+lastDate);
             issues = result.getIssues()
                            .stream()
-                           .filter(t -> t.hasAssignee(assignee) && t.isAfter(lastDate) && t.isDone() && t.hasSprint())
+                           .filter(t -> t.isDone() && t.hasSprint())
                            .collect(Collectors.toList());
-
-            log.add("Found "+issues.size()+" tasks for "+assignee);
-
         }
 
         return filterByLog(issues, assignee, lastDate);
