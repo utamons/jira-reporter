@@ -84,7 +84,7 @@ public class JiraClient {
 
         if (boardId > 0) {
             String dateStr = sf.format(lastDate);
-            final String url = JiraClient.agileUrl + "board/" + boardId + "/issue?jql=assignee=currentUser()"
+            final String url = JiraClient.agileUrl + "board/" + boardId + "/issue?maxResults=1000&jql=assignee=currentUser()"
                     +URLEncoder.encode(" AND updated>\""+dateStr+"\"","UTF-8");
 
             log.add("Request for tasks...");
