@@ -6,7 +6,7 @@
 
     <groupId>jira</groupId>
     <artifactId>reporter</artifactId>
-    <version>0.01-SNAPSHOT</version>
+    <version>1.00</version>
     <packaging>jar</packaging>
 
     <properties>
@@ -63,6 +63,22 @@
                         <configuration>
                             <outputDirectory>${project.build.directory}/lib</outputDirectory>
                         </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <artifactId>maven-antrun-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <configuration>
+                            <tasks>
+                                <copy file="target/reporter-1.00.jar" tofile="/Users/oleg/bin/reporter/reporter.jar"/>
+                            </tasks>
+                        </configuration>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
                     </execution>
                 </executions>
             </plugin>

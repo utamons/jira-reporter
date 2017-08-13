@@ -20,7 +20,7 @@ import java.util.List;
 class RestClient {
     private CloseableHttpClient client;
 
-    private final static int TIMEOUT = 120000;
+    private final static int TIMEOUT = 30000;
     private final String username;
     private final String password;
 
@@ -75,16 +75,13 @@ class RestClient {
                     }
 
                     try (PrintWriter out = new PrintWriter("tasks.json")) {
-                        for (String s : strings) {
-                            out.println(s);
-                        }
+                        strings.forEach(out::println);
                     }
                 }
                 else {
                     final ObjectMapper mapper = new ObjectMapper();
                     result = mapper.readValue(stream, type);
                 }
-
             }
         }
 
