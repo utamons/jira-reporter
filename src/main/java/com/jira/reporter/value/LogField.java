@@ -27,6 +27,6 @@ public class LogField {
     }
 
     public boolean isDone() {
-        return toString.equals("Ready for Test") || toString.equals("Done");
+        return toString != null && (toString.equals("Ready for Test") || toString.equals("Done"));
     }
 }

@@ -55,7 +55,7 @@ public class JiraClient {
 
 
         for (Task t : issues) {
-          //  this.log.add("Checking "+t.getKey());
+           // this.log.add("Checking "+t.getKey());
             final String url       = JiraClient.logUrl + "issue/" + t.getId() + "/changelog";
             final LogResult    logResult = client.get(LogResult.class, url, false);
             final List<LogEntry> log = logResult.getValues();
@@ -70,7 +70,7 @@ public class JiraClient {
                     }
                 }
             }
-          //  this.log.add("Finished "+t.getKey());
+           // this.log.add("Finished "+t.getKey());
         }
 
         return result;
@@ -97,5 +97,6 @@ public class JiraClient {
         }
 
         return filterByLog(issues, assignee, lastDate);
+        //return issues;
     }
 }
