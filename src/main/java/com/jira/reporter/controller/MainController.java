@@ -68,7 +68,10 @@ public class MainController {
         password = settings.getPassword();
         board = settings.getBoard();
         assignee = settings.getAssignee();
-        emails = Arrays.asList(settings.getEmails().split(","));
+        emails = new ArrayList<>();
+        for (String email: Arrays.asList(settings.getEmails().split(","))) {
+            emails.add(email.trim());
+        }
         reportNum = settings.getReportNum();
         lastDate = settings.getLastDate();
 
@@ -158,9 +161,12 @@ public class MainController {
             }
             else {
                 sendButton.setDisable(true);
-                log.add("Sending to:");
+                StringBuilder emailStr = new StringBuilder();
                 for (String email : emails)
-                    log.add(email);
+                    emailStr.append(email).append(", ");
+
+                emailStr.setLength(emailStr.length()-2);
+                log.add("Sending to: "+emailStr.toString());
                 mailManager.sendMessage(taskValues, addText.getText(), reportNum, emails);
                 log.add("Finished.");
                 startButton.setDisable(false);
