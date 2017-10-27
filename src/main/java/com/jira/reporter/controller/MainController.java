@@ -1,7 +1,7 @@
 package com.jira.reporter.controller;
 
 import com.jira.reporter.mail.MailSender;
-import com.jira.reporter.mail.MailgunManager;
+import com.jira.reporter.mail.MailgunSender;
 import com.jira.reporter.rest.JiraClient;
 import com.jira.reporter.util.Log;
 import com.jira.reporter.value.Task;
@@ -76,7 +76,7 @@ public class MainController {
         lastDate = settings.getLastDate();
 
         client = new JiraClient(username, password, board, log);
-        mailManager = new MailgunManager(settings.getMailgunUrl(), settings.getMailgunKey());
+        mailManager = new MailgunSender(settings.getMailgunUrl(), settings.getMailgunKey());
     }
 
     public void run(MouseEvent mouseEvent) {

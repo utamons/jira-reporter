@@ -26,7 +26,7 @@ import java.util.List;
  *
  * @author Oleg Zaidullin
  */
-public class MailgunManager implements MailSender{
+public class MailgunSender implements MailSender {
 
     private static final int    MAX_CONN_TOTAL = 200;
 
@@ -38,7 +38,7 @@ public class MailgunManager implements MailSender{
 
     private CloseableHttpClient client;
 
-    public MailgunManager(String url, String key) {
+    public MailgunSender(String url, String key) {
         final int TIMEOUT = 120000;
 
         this.url = url;

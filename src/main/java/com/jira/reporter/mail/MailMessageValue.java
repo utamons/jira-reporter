@@ -5,13 +5,7 @@ package com.jira.reporter.mail;
  */
 public class MailMessageValue {
 
-    private String date;
-
     private String bodyHtml;
-
-    private String timestamp;
-
-    private String token;
 
     private String from;
 
@@ -46,14 +40,6 @@ public class MailMessageValue {
         this.subject = subject;
     }
 
-    public String getDate() {
-        return date;
-    }
-
-    public void setDate(String date) {
-        this.date = date;
-    }
-
     public String getBodyHtml() {
         return bodyHtml;
     }
@@ -62,19 +48,4 @@ public class MailMessageValue {
         this.bodyHtml = bodyHtml;
     }
 
-    public String getTimestamp() {
-        return timestamp;
-    }
-
-    public void setTimestamp(String timestamp) {
-        this.timestamp = timestamp;
-    }
-
-    public String getToken() {
-        return token;
-    }
-
-    public void setToken(String token) {
-        this.token = token;
-    }
 }
