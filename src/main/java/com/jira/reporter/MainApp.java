@@ -6,11 +6,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 /*
-
-todo Implement repeating cycle "Go"->"Send" (don't show "Send" if there's 0 tasks).
-todo Don't show sending list (show number of recipients instead).
 todo Add type icons to email template
-todo Implement word-wrap in log window.
  */
 public class MainApp extends Application {
 

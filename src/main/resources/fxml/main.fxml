@@ -9,7 +9,7 @@
 <?import javafx.scene.text.Font?>
 
 <VBox prefHeight="670.0" prefWidth="895.0" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.jira.reporter.controller.MainController">
-    <TextArea id="viewText" fx:id="viewText" editable="false" prefHeight="406.0" prefWidth="895.0">
+    <TextArea id="viewText" fx:id="viewText" editable="false" prefHeight="406.0" prefWidth="895.0" wrapText="true">
         <font>
         <Font size="16.0" />
         </font>

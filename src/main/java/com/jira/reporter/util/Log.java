@@ -20,6 +20,7 @@ public class Log {
         Platform.runLater(() -> {
             log.append(line).append("\n");
             out.setText(log.toString());
+            out.appendText(""); //a workaround for setScrollTop() on out change listener. Weird, but works.
         });
     }
 }

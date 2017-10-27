@@ -7,6 +7,7 @@ import com.jira.reporter.util.Log;
 import com.jira.reporter.value.Task;
 import com.jira.reporter.value.TaskFields;
 import com.jira.reporter.value.TaskValue;
+import javafx.beans.value.ChangeListener;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
@@ -55,6 +56,7 @@ public class MainController {
 
     public void initialize() {
         try {
+            viewText.textProperty().addListener((ChangeListener<Object>) (observable, oldValue, newValue) -> viewText.setScrollTop(Double.MAX_VALUE));
             sendButton.setDisable(true);
             log = new Log(viewText);
             prefs = Preferences.userRoot().node("jira_reporter");
