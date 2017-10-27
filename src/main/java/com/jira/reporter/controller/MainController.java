@@ -70,7 +70,7 @@ public class MainController {
         board = settings.getBoard();
         assignee = settings.getAssignee();
         emails = new ArrayList<>();
-        for (String email: Arrays.asList(settings.getEmails().split(","))) {
+        for (String email : Arrays.asList(settings.getEmails().split(","))) {
             emails.add(email.trim());
         }
         reportNum = settings.getReportNum();
@@ -81,8 +81,6 @@ public class MainController {
     }
 
     public void run(MouseEvent mouseEvent) {
-        startButton.setDisable(true);
-
         Thread th = new Thread(new TasksCollector());
         th.setDaemon(true);
         th.start();
@@ -108,7 +106,7 @@ public class MainController {
         stage.show();
     }
 
-    private void getIssues() throws IOException {
+    private int getIssues() throws IOException {
         log.add("Start getting issues...");
 
         taskValues = new ArrayList<>();
@@ -125,7 +123,8 @@ public class MainController {
         }
 
         log.add("Got " + issues.size() + " done issues");
-        taskValues.forEach(t->log.add(t.getKey()+" "+t.getSummary()));
+        taskValues.forEach(t -> log.add(t.getKey() + " " + t.getSummary()));
+        return issues.size();
     }
 
     public void send(MouseEvent mouseEvent) {
@@ -138,20 +137,28 @@ public class MainController {
 
         @Override
         protected Integer call() throws Exception {
+            startButton.setDisable(true);
+            sendButton.setDisable(true);
+            int issues = 0;
             if (username == null || password == null || board == null)
                 log.add("No settings found.");
             else
                 try {
                     log.add("Connecting...");
-                    getIssues();
+                    issues = getIssues();
                     log.add("Finish.");
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-            sendButton.setDisable(false);
+            if (issues > 0) {
+                sendButton.setDisable(false);
+                startButton.setDisable(false);
+            } else
+                startButton.setDisable(false);
             return 0;
         }
     }
+
 
     class Sender extends javafx.concurrent.Task<Integer> {
 
@@ -159,23 +166,24 @@ public class MainController {
         protected Integer call() {
             if (taskValues.size() == 0) {
                 log.add("Nothing to send.");
-            }
-            else {
+            } else {
+                startButton.setDisable(true);
                 sendButton.setDisable(true);
                 StringBuilder emailStr = new StringBuilder();
                 for (String email : emails)
                     emailStr.append(email).append(", ");
 
-                emailStr.setLength(emailStr.length()-2);
-                log.add("Sending to: "+emailStr.toString());
+                emailStr.setLength(emailStr.length() - 2);
+                log.add("Sending to: " + emailStr.toString());
                 try {
                     mailManager.sendMessage(taskValues, addText.getText(), reportNum, emails);
                 } catch (MessagingException | IOException e) {
-                    log.add("Mail sending error: "+e.getClass().getName()+", "+e.getMessage());
+                    log.add("Mail sending error: " + e.getClass().getName() + ", " + e.getMessage());
                 }
                 log.add("Finished.");
                 startButton.setDisable(false);
-                prefs.put("lastDate", sf.format(new Date()));
+                lastDate = new Date();
+                prefs.put("lastDate", sf.format(lastDate));
                 prefs.putInt("reportNum", ++reportNum);
             }
             return 0;
