@@ -9,8 +9,8 @@
         <p>Hi all!</p>
         <p>Here are tasks, done since last report:</p>
         <table width="90%">
+            <th style="background-color: #CFD8DC;color: #333333; text-align: left; vertical-align: middle; padding: 10px;">Type</th>
             <th style="background-color: #CFD8DC;color: #333333; text-align: left; vertical-align: middle; padding: 10px;">Key</th>
-            <th style="background-color: #CFD8DC;color: #333333; text-align: left; vertical-align: middle; padding: 10px;">Priority</th>
             <th style="background-color: #CFD8DC;color: #333333; text-align: left; vertical-align: middle; padding: 10px;">Summary</th>
             <th style="background-color: #CFD8DC;color: #333333; text-align: left; vertical-align: middle; padding: 10px;">Status</th>
         <ul>
@@ -18,15 +18,25 @@
 
             <tr>
                 <td style="text-align: left; vertical-align: middle; padding: 10px;
-                #if ($i.priority=="High" or $i.priority=="Highest")
-                color: #c90006;"
-                #elseif ($i.priority=="Low" or $i.priority=="Lowest")
-                color: #00a151;"
+
+                #if ($i.issueType=="Bug")
+                   color: #c90006;"
                 #else
-                "
+                   "
                 #end
+
+                >$i.issueType</td>
+                <td style="text-align: left; vertical-align: middle; padding: 10px;
+
+                #if ($i.priority=="High" or $i.priority=="Highest")
+                   color: #c90006;"
+                #elseif ($i.priority=="Low" or $i.priority=="Lowest")
+                   color: #00a151;"
+                #else
+                   "
+                #end
+
                 ><b>$i.key</b></td>
-                <td style="text-align: left; vertical-align: middle; padding: 10px;"><b>$i.priority</b></td>
                 <td style="text-align: left; vertical-align: middle; padding: 10px;">$i.summary</td>
                 <td style="text-align: left; vertical-align: middle; padding: 10px;">$i.status</td>
             </tr>
