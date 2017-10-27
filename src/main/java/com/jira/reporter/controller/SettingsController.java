@@ -19,15 +19,15 @@ public class SettingsController {
     public  TextField     lastDate;
     public  TextArea      emails;
     public  TextField     reportNum;
-    public  TextField     mailgunUrl;
-    public  TextField     mailgunKey;
+    public  TextField     gmailUser;
+    public  TextField     gmailPassword;
     public  TextField     username;
     public  PasswordField password;
     public  TextField     board;
     public  Button        cancelButton;
     public  Button        okButton;
     private Settings      settings;
-    private Preferences prefs;
+    private Preferences   prefs;
     private SettingsEvent event;
 
     void setEvent(SettingsEvent event) {
@@ -44,8 +44,8 @@ public class SettingsController {
                 lastDate.getText(),
                 emails.getText(),
                 Integer.parseInt(reportNum.getText()),
-                mailgunUrl.getText(),
-                mailgunKey.getText(),
+                gmailUser.getText(),
+                gmailPassword.getText(),
                 username.getText(),
                 password.getText(),
                 board.getText());
@@ -59,8 +59,8 @@ public class SettingsController {
         prefs.put("emails", settings.getEmails());
         prefs.put("assignee", settings.getAssignee());
         prefs.putInt("reportNum", Integer.parseInt(reportNum.getText()));
-        prefs.put("mailgunUrl", settings.getMailgunUrl());
-        prefs.put("mailgunKey",settings.getMailgunKey());
+        prefs.put("gmailUser", settings.getGmailUser());
+        prefs.put("gmailPassword", settings.getGmailPassword());
     }
 
     private void fieldsFromSettings() {
@@ -68,8 +68,8 @@ public class SettingsController {
         lastDate.setText(settings.getDateString());
         emails.setText(settings.getEmails());
         reportNum.setText(String.valueOf(settings.getReportNum()));
-        mailgunUrl.setText(settings.getMailgunUrl());
-        mailgunKey.setText(settings.getMailgunKey());
+        gmailUser.setText(settings.getGmailUser());
+        gmailPassword.setText(settings.getGmailPassword());
         username.setText(settings.getUsername());
         password.setText(settings.getPassword());
         board.setText(settings.getBoard());
@@ -85,7 +85,7 @@ public class SettingsController {
         }
     }
 
-    public void save(MouseEvent mouseEvent) {
+    public void save(@SuppressWarnings("unused") MouseEvent mouseEvent) {
         try {
             Stage stage = (Stage) okButton.getScene().getWindow();
             setSettingsFromFields();
@@ -97,7 +97,7 @@ public class SettingsController {
         }
     }
 
-    public void close(MouseEvent mouseEvent) {
+    public void close(@SuppressWarnings("unused") MouseEvent mouseEvent) {
         Stage stage = (Stage) cancelButton.getScene().getWindow();
         stage.close();
     }

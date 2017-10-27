@@ -15,15 +15,15 @@ public class Settings {
     private final Date             lastDate;
     private final String           emails;
     private final int              reportNum;
-    private final String           mailgunUrl;
-    private final String           mailgunKey;
+    private final String           gmailUser;
+    private final String           gmailPassword;
     private final String           username;
     private final String           password;
     private final String           board;
     private final SimpleDateFormat sf;
 
-    public Settings(String assignee, String lastDateStr, String emails, int reportNum, String mailgunUrl,
-                    String mailgunKey, String username, String password, String board) throws ParseException {
+    public Settings(String assignee, String lastDateStr, String emails, int reportNum, String gmailUser,
+                    String gmailPassword, String username, String password, String board) throws ParseException {
 
 
         sf = new SimpleDateFormat("dd.MM.yyyy HH:mm:ss", Locale.ENGLISH);
@@ -31,64 +31,64 @@ public class Settings {
         this.assignee = assignee;
         this.emails = emails;
         this.reportNum = reportNum;
-        this.mailgunUrl = mailgunUrl;
-        this.mailgunKey = mailgunKey;
+        this.gmailPassword = gmailPassword;
+        this.gmailUser = gmailUser;
         this.username = username;
         this.password = password;
         this.board = board;
     }
 
-    public static Settings fromPrefs(Preferences prefs) throws ParseException {
+    static Settings fromPrefs(Preferences prefs) throws ParseException {
         return new Settings(
                 prefs.get("assignee", ""),
                 prefs.get("lastDate", "01.01.1970 00:00:00"),
                 prefs.get("emails", ""),
                 Integer.parseInt(prefs.get("reportNum", "1")),
-                prefs.get("mailgunUrl", ""),
-                prefs.get("mailgunKey", ""),
+                prefs.get("gmailUser", ""),
+                prefs.get("gmailPassword", ""),
                 prefs.get("username", ""),
                 prefs.get("password", ""),
                 prefs.get("board", "")
         );
     }
 
-    public String getDateString() {
+    String getDateString() {
         return sf.format(lastDate);
     }
 
-    public String getAssignee() {
+    String getAssignee() {
         return assignee;
     }
 
-    public Date getLastDate() {
+    Date getLastDate() {
         return lastDate;
     }
 
-    public String getEmails() {
+    String getEmails() {
         return emails;
     }
 
-    public int getReportNum() {
+    int getReportNum() {
         return reportNum;
     }
 
-    public String getMailgunUrl() {
-        return mailgunUrl;
-    }
-
-    public String getMailgunKey() {
-        return mailgunKey;
-    }
-
-    public String getUsername() {
+    String getUsername() {
         return username;
     }
 
-    public String getPassword() {
+    String getPassword() {
         return password;
     }
 
-    public String getBoard() {
+    String getBoard() {
         return board;
+    }
+
+    public String getGmailUser() {
+        return gmailUser;
+    }
+
+    public String getGmailPassword() {
+        return gmailPassword;
     }
 }

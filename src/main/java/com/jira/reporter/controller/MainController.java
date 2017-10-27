@@ -1,7 +1,7 @@
 package com.jira.reporter.controller;
 
+import com.jira.reporter.mail.GmailSender;
 import com.jira.reporter.mail.MailSender;
-import com.jira.reporter.mail.MailgunSender;
 import com.jira.reporter.rest.JiraClient;
 import com.jira.reporter.util.Log;
 import com.jira.reporter.value.Task;
@@ -17,6 +17,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
+import javax.mail.MessagingException;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -76,7 +77,7 @@ public class MainController {
         lastDate = settings.getLastDate();
 
         client = new JiraClient(username, password, board, log);
-        mailManager = new MailgunSender(settings.getMailgunUrl(), settings.getMailgunKey());
+        mailManager = new GmailSender(settings.getGmailUser(), settings.getGmailPassword());
     }
 
     public void run(MouseEvent mouseEvent) {
@@ -155,7 +156,7 @@ public class MainController {
     class Sender extends javafx.concurrent.Task<Integer> {
 
         @Override
-        protected Integer call() throws Exception {
+        protected Integer call() {
             if (taskValues.size() == 0) {
                 log.add("Nothing to send.");
             }
@@ -167,7 +168,11 @@ public class MainController {
 
                 emailStr.setLength(emailStr.length()-2);
                 log.add("Sending to: "+emailStr.toString());
-                mailManager.sendMessage(taskValues, addText.getText(), reportNum, emails);
+                try {
+                    mailManager.sendMessage(taskValues, addText.getText(), reportNum, emails);
+                } catch (MessagingException | IOException e) {
+                    log.add("Mail sending error: "+e.getClass().getName()+", "+e.getMessage());
+                }
                 log.add("Finished.");
                 startButton.setDisable(false);
                 prefs.put("lastDate", sf.format(new Date()));

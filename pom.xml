@@ -78,7 +78,7 @@
                         <phase>package</phase>
                         <configuration>
                             <tasks>
-                                <copy file="target/reporter-1.00.jar" tofile="/Users/oleg/bin/reporter/reporter.jar"/>
+                                <copy file="target/reporter-0.01.jar" tofile="/Users/oleg/bin/reporter/reporter.jar"/>
                             </tasks>
                         </configuration>
                         <goals>

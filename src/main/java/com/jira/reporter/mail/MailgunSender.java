@@ -22,7 +22,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * The class is meant to work with Mailgun service.
+ * The class is meant to work with Mailgun service. Not used, but can be used, if needed.
  *
  * @author Oleg Zaidullin
  */
