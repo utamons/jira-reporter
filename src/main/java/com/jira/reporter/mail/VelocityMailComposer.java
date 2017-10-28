@@ -6,9 +6,12 @@ import org.apache.velocity.VelocityContext;
 import org.apache.velocity.app.Velocity;
 
 import java.io.StringWriter;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 /**
  * @author Oleg Zaidullin
@@ -17,7 +20,7 @@ class VelocityMailComposer {
 
     private final Template template;
 
-     VelocityMailComposer() {
+    VelocityMailComposer() {
 
         VelocityContext context = new VelocityContext();
 
@@ -26,13 +29,16 @@ class VelocityMailComposer {
         template = Velocity.getTemplate("mail.html");
     }
 
-     MailMessageValue getMessage(List<TaskValue> tasks, String comment, int num, List<String> emails) {
-        Map<String, Object> context = new HashMap<>();
-        context.put("tasks",tasks);
-        if (comment != null && comment.trim().length() > 0)
-            context.put("comment",comment);
+    MailMessageValue getMessage(List<TaskValue> tasks, String comment, int num, List<String> emails) {
 
-        return compose("Report "+num, context, emails);
+        List<TaskValue> sortedTasks = tasks.stream().sorted(Comparator.comparing(sortKey)).collect(Collectors.toList());
+
+        Map<String, Object> context = new HashMap<>();
+        context.put("tasks", sortedTasks);
+        if (comment != null && comment.trim().length() > 0)
+            context.put("comment", comment);
+
+        return compose("Report " + num, context, emails);
     }
 
 
@@ -42,7 +48,7 @@ class VelocityMailComposer {
         VelocityContext  context = new VelocityContext(fields);
 
         msg.setFrom("Oleg Zaidullin <cornknight@gmail.com>");
-        String [] to = new String[emails.size()];
+        String[] to = new String[emails.size()];
         to = emails.toArray(to);
 
         msg.setTo(to);
@@ -54,4 +60,22 @@ class VelocityMailComposer {
 
         return msg;
     }
+
+    private Function<TaskValue, Integer> sortKey = taskValue -> {
+        switch (taskValue.getPriority()) {
+            case "Highest":
+                return 0;
+            case "High":
+                return 1;
+            case "Medium":
+                return 2;
+            case "Low":
+                return 3;
+            case "Lowest":
+                return 4;
+            default:
+                return 5;
+        }
+    };
+
 }
