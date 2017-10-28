@@ -3,6 +3,7 @@ package com.jira.reporter.value;
 /**
  * @author Oleg Zaidullin
  */
+@SuppressWarnings("unused")
 public class TaskValue {
     private String key;
     private String issueType;

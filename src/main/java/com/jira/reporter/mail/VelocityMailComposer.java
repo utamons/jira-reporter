@@ -6,12 +6,13 @@ import org.apache.velocity.VelocityContext;
 import org.apache.velocity.app.Velocity;
 
 import java.io.StringWriter;
-import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.function.Function;
-import java.util.stream.Collectors;
+
+import static java.util.Comparator.comparing;
+import static java.util.stream.Collectors.toList;
 
 /**
  * @author Oleg Zaidullin
@@ -31,7 +32,7 @@ class VelocityMailComposer {
 
     MailMessageValue getMessage(List<TaskValue> tasks, String comment, int num, List<String> emails) {
 
-        List<TaskValue> sortedTasks = tasks.stream().sorted(Comparator.comparing(sortKey)).collect(Collectors.toList());
+        List<TaskValue> sortedTasks = tasks.stream().sorted(comparing(sortKey)).collect(toList());
 
         Map<String, Object> context = new HashMap<>();
         context.put("tasks", sortedTasks);
@@ -42,8 +43,7 @@ class VelocityMailComposer {
     }
 
 
-    private MailMessageValue compose(String subject, Map<String, Object> fields,
-                                     List<String> emails) {
+    private MailMessageValue compose(String subject, Map<String, Object> fields, List<String> emails) {
         MailMessageValue msg     = new MailMessageValue();
         VelocityContext  context = new VelocityContext(fields);
 

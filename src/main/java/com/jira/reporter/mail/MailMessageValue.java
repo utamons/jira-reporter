@@ -3,7 +3,7 @@ package com.jira.reporter.mail;
 /**
  * @author Oleg Zaidullin
  */
-public class MailMessageValue {
+class MailMessageValue {
 
     private String bodyHtml;
 
@@ -13,38 +13,39 @@ public class MailMessageValue {
 
     private String subject;
 
-    public MailMessageValue() {
+    MailMessageValue() {
     }
 
-    public String getFrom() {
+    String getFrom() {
         return from;
     }
 
-    public void setFrom(String from) {
+    @SuppressWarnings("SameParameterValue")
+    void setFrom(String from) {
         this.from = from;
     }
 
-    public String[] getTo() {
+    String[] getTo() {
         return to;
     }
 
-    public void setTo(String[] to) {
+    void setTo(String[] to) {
         this.to = to;
     }
 
-    public String getSubject() {
+    String getSubject() {
         return subject;
     }
 
-    public void setSubject(String subject) {
+    void setSubject(String subject) {
         this.subject = subject;
     }
 
-    public String getBodyHtml() {
+    String getBodyHtml() {
         return bodyHtml;
     }
 
-    public void setBodyHtml(String bodyHtml) {
+    void setBodyHtml(String bodyHtml) {
         this.bodyHtml = bodyHtml;
     }
 
