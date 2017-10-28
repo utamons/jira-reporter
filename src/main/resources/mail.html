@@ -1,6 +1,36 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"><head>
     <meta content="width=device-width" name="viewport">
+    <style type="text/css">
+        .Bug {
+            color: #c90006;
+        }
+        .Highest {
+            color: #c90006;
+            padding-right: 4px;
+        }
+        .High {
+            color: #ff4a4d;
+            padding-right: 4px;
+        }
+        .Medium {
+            color: rgba(19,140,255,0.92);
+            padding-right: 4px;
+        }
+        .Low {
+            color: #00a151;
+            padding-right: 4px;
+        }
+        .Lowest {
+            color: rgba(0,220,87,0.61);
+            padding-right: 4px;
+        }
+        td {
+            text-align: left;
+            vertical-align: middle;
+            padding: 10px;
+        }
+    </style>
 </head>
 <body style="height: 100%; line-height: 1.3em; margin: 0px;" bgcolor="#f6f6f6">
 <div id="outer" style="text-align: center;">
@@ -9,38 +39,22 @@
         <p>Hi all!</p>
         <p>Here are tasks, done since last report:</p>
         <table width="90%">
-            <th style="background-color: #CFD8DC;color: #333333; text-align: left; vertical-align: middle; padding: 10px;">Type</th>
             <th style="background-color: #CFD8DC;color: #333333; text-align: left; vertical-align: middle; padding: 10px;">Key</th>
             <th style="background-color: #CFD8DC;color: #333333; text-align: left; vertical-align: middle; padding: 10px;">Summary</th>
             <th style="background-color: #CFD8DC;color: #333333; text-align: left; vertical-align: middle; padding: 10px;">Status</th>
         <ul>
             #foreach($i in $tasks)
-
-            <tr>
-                <td style="text-align: left; vertical-align: middle; padding: 10px;
-
-                #if ($i.issueType=="Bug")
-                   color: #c90006;"
-                #else
-                   "
-                #end
-
-                >$i.issueType</td>
-                <td style="text-align: left; vertical-align: middle; padding: 10px;
-
-                #if ($i.priority=="High" or $i.priority=="Highest")
-                   color: #c90006;"
-                #elseif ($i.priority=="Low" or $i.priority=="Lowest")
-                   color: #00a151;"
-                #else
-                   "
-                #end
-
-                ><b>$i.key</b></td>
-                <td style="text-align: left; vertical-align: middle; padding: 10px;">$i.summary</td>
-                <td style="text-align: left; vertical-align: middle; padding: 10px;">$i.status</td>
-            </tr>
-
+                <tr>
+                    <td><b><span class="$i.priority">
+                        #if ($i.issueType=="Bug")
+                           &#9760;
+                        #else
+                           &#9733;
+                        #end
+                    </span>$i.key</b></td>
+                    <td>$i.summary</td>
+                    <td>$i.status</td>
+                </tr>
             #end
         </ul>
         </table>
@@ -54,4 +68,5 @@
     </div>
 </div>
 </div>
-</body></html>
+</body>
+</html>
