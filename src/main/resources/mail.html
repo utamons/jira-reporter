@@ -30,6 +30,13 @@
             vertical-align: middle;
             padding: 10px;
         }
+        th {
+            background-color: #CFD8DC;
+            color: #333333;
+            text-align: left;
+            vertical-align: middle;
+            padding: 10px;
+        }
     </style>
 </head>
 <body style="height: 100%; line-height: 1.3em; margin: 0px;" bgcolor="#f6f6f6">
@@ -39,9 +46,7 @@
         <p>Hi all!</p>
         <p>Here are tasks, done since last report:</p>
         <table width="90%">
-            <th style="background-color: #CFD8DC;color: #333333; text-align: left; vertical-align: middle; padding: 10px;">Key</th>
-            <th style="background-color: #CFD8DC;color: #333333; text-align: left; vertical-align: middle; padding: 10px;">Summary</th>
-            <th style="background-color: #CFD8DC;color: #333333; text-align: left; vertical-align: middle; padding: 10px;">Status</th>
+            <th>Key</th><th>Summary</th><th>Status</th>
         <ul>
             #foreach($i in $tasks)
                 <tr>
