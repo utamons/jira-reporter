@@ -1,8 +1,11 @@
 package com.jira.reporter.value;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 /**
  * @author Oleg Zaidullin
  */
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Board {
     private int id;
     private String self;

@@ -149,7 +149,7 @@ public class MainController {
                     log.add("Connecting...");
                     issues = getIssues();
                     log.add("Finish.");
-                } catch (IOException e) {
+                } catch (Exception e) {
                     e.printStackTrace();
                 }
             if (issues > 0) {
