@@ -34,7 +34,7 @@ public class Task {
     }
 
     public boolean isDone() {
-        return fields.getStatus().getName().equals("Done") || fields.getStatus().getName().equals("Ready for Test");
+        return /*fields.getStatus().getName().equals("Done") || */ fields.getStatus().getName().equals("Ready for Test");
     }
 
     public boolean hasAssignee(String assignee) {
