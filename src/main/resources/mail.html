@@ -50,7 +50,7 @@
         <ul>
             #foreach($i in $tasks)
                 <tr>
-                    <td><b><span class="$i.priority">
+                    <td width="15%"><b><span class="$i.priority">
                         #if ($i.issueType=="Bug")
                            &#9760;
                         #else
@@ -58,7 +58,7 @@
                         #end
                     </span>$i.key</b></td>
                     <td>$i.summary</td>
-                    <td>$i.status</td>
+                    <td width="15%">$i.status</td>
                 </tr>
             #end
         </ul>
