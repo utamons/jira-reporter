@@ -1,5 +1,4 @@
 # jira-reporter
-
 Creating 'Ready To Test' JIRA reports from SCRUM board
 
 This Java/FX application gathers all *'Ready To Test'* Atlassian JIRA tasks, from a given SCRUM board for a given assignee, creates a report and sends the report to a recipients list.
